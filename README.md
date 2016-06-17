@@ -5,4 +5,4 @@ Blog Project
 
 ## eventlog
 - 6-17-2016
- * Added More Css and HTMl for comment box on (mobile view)
+ * Added More Css and HTML for comment box on (mobile view)

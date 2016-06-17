@@ -18,3 +18,31 @@ body {
     border: dashed red;
     
 }
+
+.comment-holder{
+    margin-left: -40px;
+    margin-bottom: 7px;
+    list-style-type: none;
+    border: solid yellow;
+    border-radius: 5px;
+}
+
+li.comment-holder:hover{
+    background-color: chocolate;
+}
+
+.user-img{
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    box-shadow: inset 0px 1px 0px rgba(255,255,255,0.7), 0px 3px 5px rgba(0,0,0,0.7);
+}
+
+
+
+
+
+
+
