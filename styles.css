@@ -29,6 +29,11 @@ body {
 
 li.comment-holder:hover{
     background-color: chocolate;
+    
+}
+
+li.comment-holder:hover .deletebutton-holder{
+    display: block;
 }
 
 .user-img{
@@ -40,8 +45,22 @@ li.comment-holder:hover{
     box-shadow: inset 0px 1px 0px rgba(255,255,255,0.7), 0px 3px 5px rgba(0,0,0,0.7);
 }
 
+.deletebutton-holder{
+    height: 28px;
+    width: 28px;
+    float: right;
+    color: red;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border-color: red;
+    opacity: 0.5;
+    cursor: pointer;
+    display: none;
+}
 
-
+.deletebutton-holder:hover{
+    opacity: 1;
+}
 
 
 
