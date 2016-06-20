@@ -66,12 +66,12 @@ textarea.comment-box-textarea{
     width: 97.7%;
     height: 95px;
     resize: none;
-        border-radius: 5px;
+    border-radius: 5px;
 
 }
 
 textarea.comment-box-textarea:hover{
-    border: solid red;
+    border: solid green;
 }
 input.comment-box-username{
     margin-bottom: 10px;
