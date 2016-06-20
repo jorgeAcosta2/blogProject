@@ -9,13 +9,12 @@ body {
 
 #page-data{
     margin-bottom: 20px;
-    border-bottom: thick dashed red;
+    border-bottom: thick dashed grey;
 }
 
 #comment-wrapper{
     width: auto;
     margin: 5px;
-    border: dashed red;
     
 }
 
@@ -23,7 +22,6 @@ body {
     margin-left: -40px;
     margin-bottom: 7px;
     list-style-type: none;
-    border: solid yellow;
     border-radius: 5px;
 }
 
@@ -62,12 +60,14 @@ li.comment-holder:hover .deletebutton-holder{
     opacity: 1;
 }
 
-/***** Comment Textbox *****/
+/***** Comment Form *****/
 textarea.comment-box-textarea{
     color: black;
     width: 97.7%;
     height: 95px;
     resize: none;
+        border-radius: 5px;
+
 }
 
 textarea.comment-box-textarea:hover{
@@ -77,17 +77,30 @@ input.comment-box-username{
     margin-bottom: 10px;
     width: 150px;
     height: 25px;
-    border: solid blue;
     color: black;
+    border-radius: 5px;
 }
 
-.submitbutton-container{
-    height: 20px;
+.commentform-submitbutton{
+    height: 30px;
     width: 50px;
     background: white;
     float: right;
-    margin-top: 10px;
+    margin-top: 3px;
+    color: red;
+    border-radius: 5px;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
