@@ -62,6 +62,35 @@ li.comment-holder:hover .deletebutton-holder{
     opacity: 1;
 }
 
+/***** Comment Textbox *****/
+textarea.comment-box-textarea{
+    color: black;
+    width: 97.7%;
+    height: 95px;
+    resize: none;
+}
+
+textarea.comment-box-textarea:hover{
+    border: solid red;
+}
+input.comment-box-username{
+    margin-bottom: 10px;
+    width: 150px;
+    height: 25px;
+    border: solid blue;
+    color: black;
+}
+
+.submitbutton-container{
+    height: 20px;
+    width: 50px;
+    background: white;
+    float: right;
+    margin-top: 10px;
+}
+
+
+
 
 
 
