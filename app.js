@@ -1,18 +1,44 @@
 $(document).ready(function(){
    //Just to test jquery is working 
    $('header').hide().show("slow");
-    var submitbutton = $('#commentform button');
+    var submitbutton = $('.commentform-submitbutton');
     
 
-submitbutton.click(function(){
+submitbutton.click(function(e){
     //.val(); works in this scope but not outside this scope, I have no clue why 
     //this is user text
     var text = $('.comment-box-textarea').val();
     var username = $(".comment-box-username").val();
-    
+    var form = $('#commentform');
     clearForm();
     checkForEmptyFormValues(username,text);
 
+    form.submit(function(e){
+        
+        console.log("form submit event occured");
+        var formAction = $(this).attr("action");
+        var formData = {
+        'name': $('#commentform form[name=form]').val(),
+        'user': $('input[name=user]').val()
+        };
+        
+        $.ajax({
+    type        : 'POST',
+    url         : formAction,
+    data        : formData,
+    dataType    : 'json',
+    success     : function(data) {
+      // log data to the console so we can see
+      console.log("success");
+      console.log(data);
+    }
+});
+    e.preventDefault();
+        
+});//end submit
+    
+    
+    
      /*function ajaxTest(){
          xhr = new XMLHttpRequest();
          xhr.open('POST',"http://localhost:3000/garbage.json", true);
@@ -25,7 +51,7 @@ submitbutton.click(function(){
      }
     ajaxTest();*/
     
-});
+});//end click
 
     
     

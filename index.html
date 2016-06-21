@@ -43,25 +43,25 @@
                 </div>
                 <div id="comment-wrapper">
                     <h3 class="comment-title">Comments</h3>
-                        <form action="server.js" method="post" id="commentform" name="form">
+                        <form action="/server.js" method="POST" id="commentform" name="form" value="data">
                             <legend class="username-legend">Name:</legend>
                             <input type="text" id="username" name="user" value="" class="comment-box-username"></input>
                             <button type="submit" id="commentbtn" name="ajaxbtn" value="" class="commentform-submitbutton">&#10004;</button>
-                            <textarea id="textareaId" name="text" value="" class="comment-box-textarea"></textarea>
+                            <textarea id="textareaId" name="comment" value="" class="comment-box-textarea"></textarea>
                         </form>                        
                     <div class="comment-list">
                         <ul class="comment-holder-ul">
-                            <li class="comment-holder" id="_1">
-                                <button class="deletebutton-holder" form="commentform">X</button>
+                            <li class="comment-holder" form="commentform">
+                                <button class="deletebutton-holder">X</button>
                                 <h3 class="username-field"><img src="commentavatar.png" class="user-img"/> John Doe</h3>
                                 <div class="comment-text">This is sample text right now. This is the posted comment's box.</div> 
                             </li>
-                            <li class="comment-holder" id="_1">
-                                <button class="deletebutton-holder" form="commentform">X</button>
+                            <li class="comment-holder" form="commentform">
+                                <button class="deletebutton-holder">X</button>
                                 <h3 class="username-field"><img src="commentavatar.png" class="user-img"/> John Doe</h3>
                                 <div class="comment-text">This is sample text right now. This is the posted comment's box.</div>
                             </li>
-                            <li class="comment-holder" id="_1" form="commentform">
+                            <li class="comment-holder" form="commentform">
                                 <button class="deletebutton-holder">X</button>
                                 <h3 class="username-field"><img src="commentavatar.png" class="user-img"/> John Doe</h3>
                                 <div class="comment-text">This is sample text right now. This is the posted comment's box.</div>

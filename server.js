@@ -7,9 +7,12 @@ app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname + '/'));
 });
 app.listen(3000,function(){
-    console.log("It's running");
+    console.log("It's running, http://localhost:3000");
 });
 
+app.post('/', (req,res) => {
+   console.log(res); 
+});
 
 
 
