@@ -1,59 +1,24 @@
 $(document).ready(function(){
    //Just to test jquery is working 
    $('header').hide().show("slow");
-    var submitbutton = $('.commentform-submitbutton');
+    var commentForm = $('#commentform');
     
 
-submitbutton.click(function(e){
-    //.val(); works in this scope but not outside this scope, I have no clue why 
-    //this is user text
+commentForm.submit(function(e){
+    e.preventDefault();
     var text = $('.comment-box-textarea').val();
     var username = $(".comment-box-username").val();
-    var form = $('#commentform');
-    clearForm();
+    var url = $(this).attr('action');
+    var formData = commentForm.serialize();
+    
     checkForEmptyFormValues(username,text);
-
-    form.submit(function(e){
-        
-        console.log("form submit event occured");
-        var formAction = $(this).attr("action");
-        var formData = {
-        'name': $('#commentform form[name=form]').val(),
-        'user': $('input[name=user]').val()
-        };
-        
-        $.ajax({
-    type        : 'POST',
-    url         : formAction,
-    data        : formData,
-    dataType    : 'json',
-    success     : function(data) {
-      // log data to the console so we can see
-      console.log("success");
-      console.log(data);
-    }
-});
-    e.preventDefault();
-        
-});//end submit
     
+    $.post(url,formData,function(data){
+       $('#page-data').html(data);
+    });
     
-    
-     /*function ajaxTest(){
-         xhr = new XMLHttpRequest();
-         xhr.open('POST',"http://localhost:3000/garbage.json", true);
-         xhr.onreadystatechange = function(){
-             if(xhr.readyState == 4 && xhr.status == 200){
-                 console.log(responseText);
-             }
-         }
-         xhr.send();
-     }
-    ajaxTest();*/
-    
-});//end click
-
-    
+    clearForm();
+ });    
     
     
 

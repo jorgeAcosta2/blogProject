@@ -43,12 +43,12 @@
                 </div>
                 <div id="comment-wrapper">
                     <h3 class="comment-title">Comments</h3>
-                        <form action="/server.js" method="POST" id="commentform" name="form" value="data">
-                            <legend class="username-legend">Name:</legend>
-                            <input type="text" id="username" name="user" value="" class="comment-box-username"></input>
-                            <button type="submit" id="commentbtn" name="ajaxbtn" value="" class="commentform-submitbutton">&#10004;</button>
-                            <textarea id="textareaId" name="comment" value="" class="comment-box-textarea"></textarea>
-                        </form>                        
+                    <form method="post" action="/index.html" id="commentform">
+                        <legend class="username-legend">Name:</legend>
+                        <input type="text" name="user" class="comment-box-username">
+                        <button type="submit" name="submitbutton" value="clicked" class="commentform-submitbutton">&#10004;</button>
+                        <textarea name="comment" class="comment-box-textarea"></textarea>
+                    </form>                        
                     <div class="comment-list">
                         <ul class="comment-holder-ul">
                             <li class="comment-holder" form="commentform">
