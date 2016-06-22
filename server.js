@@ -14,7 +14,7 @@ if ('development' == env) {
    // configure stuff here
 }
 */
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
@@ -24,15 +24,16 @@ app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname + '/'));
 });
 
-app.get('/index.html',(req,res)=>{
+app.route('/index.html')
+    .get((req,res)=>{
     app.use(express.static(__dirname + '/'));
     res.sendFile(path.join(__dirname + '/'));
-});
-
-app.post('/index.html', function(req, res) {
+    })
+    .post((req, res)=>{
+    res.send(req.body);
     console.log("Name:" + req.body.user , "Comment: "  + req.body.comment);
     res.end();
-});
+    });
 
 app.listen(3000,()=>{
     console.log('3000');

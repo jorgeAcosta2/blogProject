@@ -14,19 +14,19 @@ commentForm.submit(function(e){
     checkForEmptyFormValues(username,text);
     
     $.post(url,formData,function(data){
-       $('#page-data').html(data);
-    });
+        
+        console.log(data);
+    },"json");
     
     clearForm();
  });    
     
-    
+     
 
 //I gave the function two arguements since I decided to move it to the global scope
 function checkForEmptyFormValues(username,text){
     if(username.length && text.length > 0){
-        console.log('username: ' + username);
-        console.log('comment-text: ' + text);
+        console.log('Form is completely filled.');
     }else{ if(text.length == 0){
         $(".comment-box-textarea").css('border', 'solid red');
         console.log("Text area is empty");
