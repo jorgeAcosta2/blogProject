@@ -19,12 +19,14 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-app.get('/',(req,res)=>{
-    app.use(express.static(__dirname + '/'));
-    res.sendFile(path.join(__dirname + '/'));
-});
+//app.get('/',(req,res)=>{
+    //app.use(express.static(__dirname + '/'));
+    //res.sendFile(path.join(__dirname + '/'));
+//});
 
-app.route('/index.html')
+var homepaths = ['/','/index.html'];
+
+app.route(homepaths)
     .get((req,res)=>{
     app.use(express.static(__dirname + '/'));
     res.sendFile(path.join(__dirname + '/'));
@@ -36,7 +38,7 @@ app.route('/index.html')
     });
 
 app.listen(3000,()=>{
-    console.log('3000');
+    console.log('http://localhost:3000/index.html');
 });
 
 

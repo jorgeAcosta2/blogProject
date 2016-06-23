@@ -15,6 +15,7 @@ Blog Project
 - 6-20-2016
  * After countless hours trying to get Node to serve my project, I failed. I then decided to resort to ExpressJS.
  * After about an 30 mins I was able to get my website fully loaded with node by using Express.
-
+- 6-22-2016
+ * Successful post with node and ajax
 ## links 
 - [avatar link](https://www.iconfinder.com/icons/628287/anonym_avatar_default_head_person_unknown_user_icon#size=128)

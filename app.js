@@ -14,16 +14,37 @@ commentForm.submit(function(e){
     checkForEmptyFormValues(username,text);
     
     $.post(url,formData,function(data){
-        
-        console.log(data);
-    },"json");
-    
-    clearForm();
- });    
-    
-     
+        var response = data;
+        var user = response.user,
+            comment = response.comment;
+            uglyHtml(user,comment);     
+        },"json");
 
-//I gave the function two arguements since I decided to move it to the global scope
+    clearForm();
+ });//end submit    
+});//end load
+
+
+
+
+function clearForm(){
+        $('.comment-box-textarea').val("");
+        $(".comment-box-username").val("");
+        $(".comment-box-textarea").css('border', 'none');
+        $(".comment-box-username").css('border', 'none');
+    };
+
+function uglyHtml(user,comment){
+    var commentHtml="";
+    commentHtml += "<li class=\"comment-holder\" form=\"commentform\">";
+    commentHtml += "<button class=\"deletebutton-holder\">X<\/button>";
+    commentHtml += "<h3 class=\"username-field\"><img src=\"commentavatar.png\" class=\"user-img\"\/>"+" "+user+"<\/h3>";
+    commentHtml += "<div class=\"comment-text\">"+comment+"<\/div>";
+    commentHtml += "<\/li>";
+    
+    $('.comment-holder-ul').prepend(commentHtml);
+}    
+    
 function checkForEmptyFormValues(username,text){
     if(username.length && text.length > 0){
         console.log('Form is completely filled.');
@@ -43,15 +64,3 @@ function checkForEmptyFormValues(username,text){
     }   
     }       
  };
-
-function clearForm(){
-        $('.comment-box-textarea').val("");
-        $(".comment-box-username").val("");
-        $(".comment-box-textarea").css('border', 'none');
-        $(".comment-box-username").css('border', 'none');
-    };
-
-});//end ready
-
-
-
