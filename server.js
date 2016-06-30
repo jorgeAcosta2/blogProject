@@ -38,7 +38,7 @@ app.route(homepaths)
     })
     .delete((req,res)=>{
     console.log(req.body);
-    res.send('Something happened??????');
+    res.send(req.body.id);
     });
 
 app.listen(3000,()=>{

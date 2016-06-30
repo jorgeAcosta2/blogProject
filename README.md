@@ -17,5 +17,8 @@ Blog Project
  * After about an 30 mins I was able to get my website fully loaded with node by using Express.
 - 6-22-2016
  * Successful post with node and ajax
+- 6-30-2016
+ * Lots of changes, index page can now add and remove comments using ajax/node(express)
+ * Used delete request in ajax and express
 ## links 
 - [avatar link](https://www.iconfinder.com/icons/628287/anonym_avatar_default_head_person_unknown_user_icon#size=128)

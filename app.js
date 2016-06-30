@@ -19,20 +19,21 @@ commentForm.submit(function(e){
             comment = response.comment;
             uglyHtml(user,comment);     
         },"json");
-        clearForm();  
+        clearForm();              
 });//end submit    
-   
-    //delete comment
-$('ul .deletebutton-holder').click(function(id){
-       $.ajax({
+
+$('.comment-holder-ul').on('click','.deletebutton-holder',function(e){
+    var $id = $(this).parent().attr('id');
+    $.ajax({
         url: url,
         type: 'DELETE',
-        data: 'id=' +id,
-        success: function(data) {
-            console.log(data);
-        }
+        data: {'id': $id},
+        success: function(id){
+            $("#"+id).remove();
+            console.log(id + ' was removed');
+            } 
         });//end ajax delete request
-    });//end click delete
+    });//end on click event
 });//end load
 
 function uglyHtml(user,comment){
@@ -42,9 +43,9 @@ function uglyHtml(user,comment){
     commentHtml += "<h3 class=\"username-field\"><img src=\"commentavatar.png\" class=\"user-img\"\/>"+" "+user+"<\/h3>";
     commentHtml += "<div class=\"comment-text\">"+comment+"<\/div>";
     commentHtml += "<\/li>";
-    $('.comment-holder').each(function(i,element){element.id = i+1;});
+    $('.comment-holder').each(function(i,element){element.id = 'comment' + i;});
     $('.comment-holder-ul').prepend(commentHtml);
-    $('.comment-holder').each(function(i,element){element.id = i+1;});    
+    $('.comment-holder').each(function(i,element){element.id = 'comment' + i;});    
 }    
 
 function clearForm(){
