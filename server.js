@@ -35,6 +35,10 @@ app.route(homepaths)
     res.send(req.body);
     console.log("Name:" + req.body.user , "Comment: "  + req.body.comment);
     res.end();
+    })
+    .delete((req,res)=>{
+    console.log(req.body);
+    res.send('Something happened??????');
     });
 
 app.listen(3000,()=>{

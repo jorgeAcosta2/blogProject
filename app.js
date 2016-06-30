@@ -2,13 +2,13 @@ $(document).ready(function(){
    //Just to test jquery is working 
    $('header').hide().show("slow");
     var commentForm = $('#commentform');
-    
+    var url = $(this).attr('action');
 
+    
 commentForm.submit(function(e){
     e.preventDefault();
     var text = $('.comment-box-textarea').val();
     var username = $(".comment-box-username").val();
-    var url = $(this).attr('action');
     var formData = commentForm.serialize();
     
     checkForEmptyFormValues(username,text);
@@ -19,20 +19,21 @@ commentForm.submit(function(e){
             comment = response.comment;
             uglyHtml(user,comment);     
         },"json");
-
-    clearForm();
- });//end submit    
+        clearForm();  
+});//end submit    
+   
+    //delete comment
+$('ul .deletebutton-holder').click(function(id){
+       $.ajax({
+        url: url,
+        type: 'DELETE',
+        data: 'id=' +id,
+        success: function(data) {
+            console.log(data);
+        }
+        });//end ajax delete request
+    });//end click delete
 });//end load
-
-
-
-
-function clearForm(){
-        $('.comment-box-textarea').val("");
-        $(".comment-box-username").val("");
-        $(".comment-box-textarea").css('border', 'none');
-        $(".comment-box-username").css('border', 'none');
-    };
 
 function uglyHtml(user,comment){
     var commentHtml="";
@@ -41,10 +42,18 @@ function uglyHtml(user,comment){
     commentHtml += "<h3 class=\"username-field\"><img src=\"commentavatar.png\" class=\"user-img\"\/>"+" "+user+"<\/h3>";
     commentHtml += "<div class=\"comment-text\">"+comment+"<\/div>";
     commentHtml += "<\/li>";
-    
+    $('.comment-holder').each(function(i,element){element.id = i+1;});
     $('.comment-holder-ul').prepend(commentHtml);
+    $('.comment-holder').each(function(i,element){element.id = i+1;});    
 }    
-    
+
+function clearForm(){
+        $('.comment-box-textarea').val("");
+        $(".comment-box-username").val("");
+        $(".comment-box-textarea").css('border', 'none');
+        $(".comment-box-username").css('border', 'none');
+    };
+
 function checkForEmptyFormValues(username,text){
     if(username.length && text.length > 0){
         console.log('Form is completely filled.');
@@ -64,3 +73,16 @@ function checkForEmptyFormValues(username,text){
     }   
     }       
  };
+
+
+
+
+
+
+
+
+
+
+
+
+
