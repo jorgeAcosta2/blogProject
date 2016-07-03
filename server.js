@@ -51,7 +51,7 @@ app.get('/testdb',(req,res)=>{
         if(e){
             return console.log(e);
         }else{
-            res.send("fan fucking tastic");
+            res.send("fan tastic");
             console.log('success');
         }
     });
