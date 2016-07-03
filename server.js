@@ -46,17 +46,6 @@ app.route(homepaths)
     res.send(req.body.id);
     });
 
-app.get('/testdb',(req,res)=>{
-    CommentSchema.find({},(e,comment)=>{
-        if(e){
-            return console.log(e);
-        }else{
-            res.send("fan tastic");
-            console.log('success');
-        }
-    });
-});
-
 app.listen(3000,()=>{
     console.log('http://localhost:3000/index.html');
 });
