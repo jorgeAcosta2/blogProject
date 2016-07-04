@@ -5,7 +5,7 @@ var path = require("path"),
     bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var database = require('./database');
-var CommentSchema = require('./database.js');
+var User = require('./database.js');
 
 //After seeing arrow functions in the express/node/everywhere documentation so much
 //I decided to read up on them and 
@@ -16,6 +16,7 @@ if ('development' == env) {
    // configure stuff here
 }
 */
+
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
@@ -29,16 +30,15 @@ app.route(homepaths)
     res.sendFile(path.join(__dirname + '/'));
     })  //end get
     .post((req, res)=>{
-        //res.send(req.body);
-    console.log("Name:" + req.body.user , "Comment:"  + req.body.comment);
-    CommentSchema.create(req.body,(e,comment)=>{
+    User.create(req.body,(e,comment)=>{
         if(e){
             return console.log(e);
         }else{
             res.send(comment);
             console.log({'comment':comment});
         }
-    }); //end CommentSchema
+    });
+        //end CommentSchema
         //res.end();
     })  //end post request
     .delete((req,res)=>{

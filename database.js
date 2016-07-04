@@ -7,14 +7,14 @@ mongoose.connect('mongodb://localhost/blogproject',(e)=>{
         console.log('Successfully connected to Mongodb');
     }
 });
-
 //schema
+var Schema = mongoose.Schema;
 
-var commentSchema = new mongoose.Schema({
+var userSchema = new Schema({
     user: String,
     comment: String
 });
 
-var model = mongoose.model('CommentSchema',commentSchema);
+var User = mongoose.model('User',userSchema);
 
-module.exports = model;
+module.exports = User;

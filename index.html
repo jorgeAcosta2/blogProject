@@ -18,11 +18,10 @@
 
         <script src="/initializr/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
-    <body>
+    <body ng-app="blogProjectApp">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
         <div class="header-container">
             <header class="wrapper clearfix">
                 <h1 class="title">Random Blog</h1>
@@ -35,33 +34,32 @@
                 </nav>
             </header>
         </div>
-
-        <div class="main-container">
-            <div id="main-container-commentboxdiv" class="main wrapper clearfix">
-                <div id="page-data">
-                    <p>Articles,blog posts,etc, go here.</p>
+        <div class="main-container" ng-controller="mainCtrl">
+        <div id="main-container-commentboxdiv" class="main wrapper clearfix">
+            <div id="page-data">
+                <p>Articles,blog posts,etc, go here.</p>
+            </div>
+            <div id="comment-wrapper">
+                <h3 class="comment-title">Comments</h3>
+                <form method="post" action="/index.html" id="commentform">
+                    <legend class="username-legend">Name:</legend>
+                    <input  ng-model="user" type="text" name="user" class="comment-box-username">
+                    <button ng-click="saveComment()" type="submit" name="submitbutton" value="clicked" class="commentform-submitbutton">&#10004;</button>
+                    <textarea ng-model="comment" name="comment" class="comment-box-textarea"></textarea>
+                </form>                        
+                <div class="comment-list">
+                    <ul class="comment-holder-ul">
+                        <commentlist></commentlist>
+                        <li id="comment0" class="comment-holder firstcomment" form="commentform">
+                            <button class="deletebutton-holder">X</button>
+                            <h3 class="username-field"><img src="commentavatar.png" class="user-img"/> John Doe</h3>
+                            <div class="comment-text">Post a comment!</div> 
+                        </li>
+                    </ul>
                 </div>
-                <div id="comment-wrapper">
-                    <h3 class="comment-title">Comments</h3>
-                    <form method="post" action="/index.html" id="commentform">
-                        <legend class="username-legend">Name:</legend>
-                        <input type="text" name="user" class="comment-box-username">
-                        <button type="submit" name="submitbutton" value="clicked" class="commentform-submitbutton">&#10004;</button>
-                        <textarea name="comment" class="comment-box-textarea"></textarea>
-                    </form>                        
-                    <div class="comment-list">
-                        <ul class="comment-holder-ul">
-                            <li id="comment0" class="comment-holder firstcomment" form="commentform">
-                                <button class="deletebutton-holder">X</button>
-                                <h3 class="username-field"><img src="commentavatar.png" class="user-img"/> John Doe</h3>
-                                <div class="comment-text">Post a comment!</div> 
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            </div>
             </div> <!-- #main -->
-        </div> <!-- #main-container -->
-
+        </div> <!-- #main-container -->        
         <div class="footer-container">
             <footer class="wrapper">
                 <a href="https://www.facebook.com/profile.php?id=100009725717179"><img src="initializr/favicon/fb.png" alt="Facebook favicon" height="57" width="57"></a>
@@ -74,8 +72,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="/initializr/js/main.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-        <script src="/app.js"></script>
-        
+        <script src="scripts/services/angularrequests.js"></script>
+        <script src="/app.js"></script>        
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
