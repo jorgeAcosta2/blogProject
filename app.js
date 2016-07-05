@@ -17,7 +17,7 @@ commentForm.submit(function(e){
         var response = data;
         var user = response.user,
             comment = response.comment;
-            uglyHtml(user,comment);     
+            uglyHtml(user,comment);
         },"json");
         clearForm();              
 });//end submit    

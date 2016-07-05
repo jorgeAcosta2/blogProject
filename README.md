@@ -20,5 +20,7 @@ Blog Project
 - 6-30-2016
  * Lots of changes, index page can now add and remove comments using ajax/node(express)
  * Used delete request in ajax and express
+- 7-5-2016
+ * After three days of learning and struggling with MEAN and REST topics in my project I can now successfully save data to MongoDb through Node using express and I can retrieve that data from MongoDb with Express and display it on the page using Angular.
 ## links 
 - [avatar link](https://www.iconfinder.com/icons/628287/anonym_avatar_default_head_person_unknown_user_icon#size=128)

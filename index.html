@@ -37,19 +37,20 @@
         <div class="main-container" ng-controller="mainCtrl">
         <div id="main-container-commentboxdiv" class="main wrapper clearfix">
             <div id="page-data">
+                {{comment.user}} {{comment.comment}}
                 <p>Articles,blog posts,etc, go here.</p>
             </div>
-            <div id="comment-wrapper">
+            <div id="comment-wrapper" >
                 <h3 class="comment-title">Comments</h3>
                 <form method="post" action="/index.html" id="commentform">
                     <legend class="username-legend">Name:</legend>
-                    <input  ng-model="user" type="text" name="user" class="comment-box-username">
-                    <button ng-click="saveComment()" type="submit" name="submitbutton" value="clicked" class="commentform-submitbutton">&#10004;</button>
+                    <input  ng-model="user"type="text" name="user" class="comment-box-username">
+                    <button ng-click="getComments()" type="submit" name="submitbutton" value="clicked" class="commentform-submitbutton">&#10004;</button>
                     <textarea ng-model="comment" name="comment" class="comment-box-textarea"></textarea>
                 </form>                        
                 <div class="comment-list">
-                    <ul class="comment-holder-ul">
-                        <commentlist></commentlist>
+                    <ul class="comment-holder-ul" id="commentul">
+                        <commentlist ng-repeat="comment in comments | orderBy: 'comments' : true"></commentlist>
                         <li id="comment0" class="comment-holder firstcomment" form="commentform">
                             <button class="deletebutton-holder">X</button>
                             <h3 class="username-field"><img src="commentavatar.png" class="user-img"/> John Doe</h3>
@@ -72,6 +73,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="/initializr/js/main.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.min.js"></script>
         <script src="scripts/services/angularrequests.js"></script>
         <script src="/app.js"></script>        
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

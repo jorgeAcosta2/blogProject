@@ -1,31 +1,27 @@
-angular.module('blogProjectApp',[])
+angular.module('blogProjectApp',['ngSanitize'])
 
-.controller('mainCtrl',function ($scope,$http){
-    
-    $scope.saveComment = function(res){
-        var data = {
-            user: $scope.user,
-            comment: $scope.comment
-        }        
-        var postData = $http.post('../../../index.html',data);
-        return console.log(postData);
+.controller('mainCtrl',function($scope,dataService){
+    $scope.injectComments = dataService.injectComments;
+    dataService.getComments(function(res){
+        //var comment = {res.data.user};
+        var responseData = res.data.map(function(res){return res});
+        console.log(responseData);
+        $scope.comments = responseData;
+        
+    })
+})
+
+.service('dataService',function($http){
+    var postData;   
+    this.getComments = function(cb){
+        $http.get('../../../comments')
+        .then(cb);
     }
 })
 
-/*
-.service('dataService',function($http,$q){
-    this.saveComment = function(comments){
-        var q = [];
-        comments.forEach(function(comment){
-            var request;
-            if(!comment){
-                request = $http.post('../../../index',comment);
-            }
-            q.push(request);
-        });
-        $q.all(q).then(function(res){
-            console.log("saved: " + comments);
-        })
-    }
-})*/
+.directive('commentlist',function(){
+        return{
+            templateUrl: '../../../commentlist.html'
+        }
+})
 

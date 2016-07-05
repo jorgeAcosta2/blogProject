@@ -21,30 +21,34 @@ app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
-
+app.set('views','./views');
+app.set('view engine','pug');
 var homepaths = ['/','/index.html'];
 
 app.route(homepaths)
-    .get((req,res)=>{
+    .get((req,res,next)=>{
     app.use(express.static(__dirname + '/'));
-    res.sendFile(path.join(__dirname + '/'));
+    res.sendFile(path.join(__dirname + '/index.html'));
+    //res.render('index');
     })  //end get
     .post((req, res)=>{
-    User.create(req.body,(e,comment)=>{
-        if(e){
-            return console.log(e);
-        }else{
-            res.send(comment);
-            console.log({'comment':comment});
-        }
+    User.create(req.body,function(e,comment){
+        if(e){return console.log(e)}
+        else{console.log('New comment saved: '+comment); res.send(comment)};
     });
-        //end CommentSchema
         //res.end();
     })  //end post request
     .delete((req,res)=>{
     console.log(req.body);
     res.send(req.body.id);
     });
+
+app.get('/comments',function(req,res){
+   User.find({},function(err,user){
+        res.json(user);
+            //end foreach
+    });     //end find  
+});
 
 app.listen(3000,()=>{
     console.log('http://localhost:3000/index.html');
