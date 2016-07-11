@@ -20,29 +20,25 @@ commentForm.submit(function(e){
             uglyHtml(user,comment);
         },"json");
         clearForm();              
-});//end submit    
+    });//end submit    
+});//end load
 
 $('.comment-holder-ul').on('click','.deletebutton-holder',function(e){
-    var $id = $(this).parent().attr('id');
-    $.ajax({
-        url: url,
-        type: 'DELETE',
-        data: {'id': $id},
-        success: function(id){
-            $("#"+id).remove();
-            console.log(id + ' was removed');
-            } 
-        });//end ajax delete request
-    });//end on click event
-});//end load
+    var $id = $(this);
+    $id.siblings('.comment-text').toggle(300,function(){
+        $id.siblings('.username-field').children('.commenthide').toggle();
+    });
+    
+});
 
 function uglyHtml(user,comment){
     var commentHtml="";
     commentHtml += "<li class=\"comment-holder\" form=\"commentform\">";
-    commentHtml += "<button class=\"deletebutton-holder\">X<\/button>";
-    commentHtml += "<h3 class=\"username-field\"><img src=\"commentavatar.png\" class=\"user-img\"\/>"+" "+user+"<\/h3>";
-    commentHtml += "<div class=\"comment-text\">"+comment+"<\/div>";
+    commentHtml += "<button class=\"deletebutton-holder\">&nabla;<\/button>";
+    commentHtml += "<h3 class=\"username-field\"><img src=\"commentavatar.png\" class=\"user-img\"\/> "+ user+"<div class=\"commenthide\" style='display: none;font-size:16px;color:#00ace6;'>comment hidden<\/div><\/h3>";
+    commentHtml += "<div class=\"comment-text\"> "+comment+"<\/div>";
     commentHtml += "<\/li>";
+    
     $('.comment-holder').each(function(i,element){element.id = 'comment' + i;});
     $('.comment-holder-ul').prepend(commentHtml);
     $('.comment-holder').each(function(i,element){element.id = 'comment' + i;});    

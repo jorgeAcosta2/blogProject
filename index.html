@@ -37,8 +37,7 @@
         <div class="main-container" ng-controller="mainCtrl">
         <div id="main-container-commentboxdiv" class="main wrapper clearfix">
             <div id="page-data">
-                {{comment.user}} {{comment.comment}}
-                <p>Articles,blog posts,etc, go here.</p>
+                <p style="font-size:26px;">Articles,blog posts,etc, go here.</p>
             </div>
             <div id="comment-wrapper" >
                 <h3 class="comment-title">Comments</h3>
@@ -51,11 +50,6 @@
                 <div class="comment-list">
                     <ul class="comment-holder-ul" id="commentul">
                         <commentlist ng-repeat="comment in comments | orderBy: 'comments' : true"></commentlist>
-                        <li id="comment0" class="comment-holder firstcomment" form="commentform">
-                            <button class="deletebutton-holder">X</button>
-                            <h3 class="username-field"><img src="commentavatar.png" class="user-img"/> John Doe</h3>
-                            <div class="comment-text">Post a comment!</div> 
-                        </li>
                     </ul>
                 </div>
             </div>

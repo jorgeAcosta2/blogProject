@@ -37,11 +37,8 @@ app.route(homepaths)
         else{console.log('New comment saved: '+comment); res.send(comment)};
     });
         //res.end();
-    })  //end post request
-    .delete((req,res)=>{
-    console.log(req.body);
-    res.send(req.body.id);
-    });
+    }); //end post request
+   
 
 app.get('/comments',function(req,res){
    User.find({},function(err,user){
